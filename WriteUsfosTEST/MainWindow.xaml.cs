@@ -32,14 +32,14 @@ namespace WriteUsfosTEST
 
 			usfosData.IndexBeam = new int[] { 0, 1, 2 };
 			usfosData.ElementType = new int[] { 28, 28, 28 };
-			usfosData.PropertyNumberBeam = new int[] { 1, 1, 1 }; //Not Done! TODO: find a way to link these to cross-sections
+			usfosData.PropertyNumberBeam = new int[] { 1, 1, 1 }; //NB!TODO: find a way to link these to cross-sections
 			usfosData.MaterialNumberBeam = new int[] { 1, 1, 1 }; //Check: since material is sent to cfem as Material++, is it 0 or 1 indexed?
 			usfosData.NodeNumbersBeam = new int[usfosData.IndexBeam.Length][];
 			usfosData.NodeNumbersBeam[0] = new int[] { 0, 1 };
 			usfosData.NodeNumbersBeam[1] = new int[] { 2, 3 };
 			usfosData.NodeNumbersBeam[2] = new int[] { 4, 5 };
 
-			usfosData.LoadGroup = new int[] { 1 }; //Not Done! Do not have enough knowledge of how loadContainers and LoadGroups works. In usfos this is a LOAD_COMPination
+			usfosData.LoadGroup = new int[] { 1 }; //NB! Do not have enough knowledge of how loadContainers and LoadGroups works. In usfos this is a LOAD_COMPination
 			usfosData.NodeLoadIDs = new int[] { 0, 1, 2, 3 };
 			usfosData.NodealIDs = new int[] { 4, 2, 0, 5 };
 			usfosData.ForceList = new double[usfosData.NodeLoadIDs.Length][];
