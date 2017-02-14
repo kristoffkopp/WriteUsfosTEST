@@ -20,9 +20,11 @@ namespace WriteUsfosTEST
 			foreach (int index in usfosData.NodeIndexes)
 			{
 				usfosData.NodeXYZ[index] = new double[3] { 1.1233, 2.2342, 3.3452 };
-				usfosData.BoundaryCode[index] = new int[6] { 1, 1, 1, 1, 1, 1 };
-				usfosData.Trans[index] = new double[,] { { 1, 0, 0 }, { 2, 0, 0 }, { 3, 0, 0 } };
+				usfosData.BoundaryCode[index] = new int[6] { 0, 0, 0, 0, 0, 0 };
+				usfosData.Trans[index] = new double[,] { { 1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } };
 			}
+			usfosData.BoundaryCode[3] = new int[6] { 1, 1, 1, 1, 1, 1 };
+
 			usfosData.Materials = new List<UsfosMaterial>();
 			usfosData.Materials.Add(new UsfosMaterial());
 			usfosData.Materials[0].Id = 1;

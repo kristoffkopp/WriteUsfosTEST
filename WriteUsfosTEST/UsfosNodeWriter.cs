@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace WriteUsfosTEST
 {
@@ -34,6 +35,12 @@ namespace WriteUsfosTEST
 			}
 
 			return stringList;
+		}
+
+		public bool areAllElemetsZero (int[] array)
+		{
+			int totalZero = array.Count(x => x == 0);
+			return (totalZero == array.Length) ? true : false;
 		}
 
 	}
