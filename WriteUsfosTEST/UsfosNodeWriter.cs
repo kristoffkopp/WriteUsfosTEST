@@ -28,10 +28,11 @@ namespace WriteUsfosTEST
 					stringList.Add(line);
 					continue;
 				}
-				if(!isTranslationIdentityMatrix(trans[index]))
+				var boundaryCodeLine = "  " + bCode[index][0] + " " + bCode[index][1] + " " + bCode[index][2] + "   " + bCode[index][3] + " " + bCode[index][4] + " " + bCode[index][5];
+				if (!isTranslationIdentityMatrix(trans[index]))
 				{
 					numberOfTrans++;
-					line = line + ("  " + bCode[index][0] + " " + bCode[index][1] + " " + bCode[index][2] + "   " + bCode[index][3] + " " + bCode[index][4] + " " + bCode[index][5]);
+					line = line + boundaryCodeLine;
 					line = line + ("    " + numberOfTrans);
 					transStringList.Add(generateNodeTransString(numberOfTrans, trans[index]));
 					stringList.Add(line);
@@ -39,7 +40,7 @@ namespace WriteUsfosTEST
 				}
 				if(!areAllElemetsZero(bCode[index]))
 				{
-					line = line + ("  " + bCode[index][0] + " " + bCode[index][1] + " " + bCode[index][2] + "   " + bCode[index][3] + " " + bCode[index][4] + " " + bCode[index][5]);
+					line = line + boundaryCodeLine;
 					stringList.Add(line);
 				}
 			}

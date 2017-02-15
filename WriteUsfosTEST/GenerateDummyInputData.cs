@@ -52,7 +52,7 @@ namespace WriteUsfosTEST
 			foreach (int index in usfosData.NodeLoadIDs)
 			{
 				usfosData.ForceList[index] = new double[] { 5.543 + index, 5.543 + index, 5.543 + index };
-				usfosData.MomentList[index] = new double[] { 2.543 + index, 2.543 + index, 2.543 + index };
+				usfosData.MomentList[index] = new double[] { 2.543 * index, 2.543 * index, 2.543 * index };
 			}
 			UsfosDataSet = usfosData;
 		}

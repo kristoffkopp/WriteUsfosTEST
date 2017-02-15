@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace WriteUsfosTEST
 {
@@ -17,15 +18,23 @@ namespace WriteUsfosTEST
 				for (int i = 0; i < 3; i++)
 					line = line + ("    " + forceList[index][i]);
 
-				line = line + "    ";
-				for (int j = 0; j < 3; j++)
-					line = line + ("    " + momentList[index][j]);
-
+				if (!areAllElemetsZero(momentList[index]))
+				{
+					line = line + "    ";
+					for (int j = 0; j < 3; j++)
+						line = line + ("    " + momentList[index][j]);
+				}
 				stringList.Add(line);
 			}
-			double scalingFactor = 1.0000; int loadCombinationID = 1;
+			double scalingFactor = 1.0000; int loadCombinationID = 1; // Needs further information on how to gather data from CfemWrapper
 			stringList.Add( "LOAD_COMB " + loadCombinationID + "     " + scalingFactor + " " + loadGroup[0]);
 			return stringList;
 		}
+		public bool areAllElemetsZero(double[] array)
+		{
+			int totalZero = array.Count(x => x == 0);
+			return (totalZero == array.Length) ? true : false;
+		}
 	}
+
 }
