@@ -5,9 +5,13 @@ namespace WriteUsfosTEST
 {
 	public class UsfosNodeWriter
 	{
+		private List<string> transStringList;
+		private int numberOfTrans = 0;
+
 		public List<string> writeNodes(int[] nodeIdexes, double[][] nodeXYZ, int[][] bCode, double[][,] trans)
 		{
 			var stringList = new List<string>();
+			transStringList = new List<string>();
 			if (nodeIdexes.Length != trans.GetLength(0))
 				return stringList;
 
@@ -19,28 +23,55 @@ namespace WriteUsfosTEST
 				line = line + (nodeXYZ[index][1].ToString() + "    ");
 				line = line + (nodeXYZ[index][2].ToString());
 
-				line = line + ("  " + bCode[index][0] + " " + bCode[index][1] + " " + bCode[index][2] + "   " + bCode[index][3] + " " + bCode[index][4] + " " + bCode[index][5]);
-				line = line + ("    " + (index + 1));
-				stringList.Add(line);
+				if(isTranslationIdentityMatrix(trans[index]) && areAllElemetsZero(bCode[index]))
+				{
+					stringList.Add(line);
+					continue;
+				}
+				if(!isTranslationIdentityMatrix(trans[index]))
+				{
+					numberOfTrans++;
+					line = line + ("  " + bCode[index][0] + " " + bCode[index][1] + " " + bCode[index][2] + "   " + bCode[index][3] + " " + bCode[index][4] + " " + bCode[index][5]);
+					line = line + ("    " + numberOfTrans);
+					transStringList.Add(generateNodeTransString(numberOfTrans, trans[index]));
+					stringList.Add(line);
+					continue;
+				}
+				if(!areAllElemetsZero(bCode[index]))
+				{
+					line = line + ("  " + bCode[index][0] + " " + bCode[index][1] + " " + bCode[index][2] + "   " + bCode[index][3] + " " + bCode[index][4] + " " + bCode[index][5]);
+					stringList.Add(line);
+				}
 			}
 
-			for (int i = 0; i < trans.GetLength(0); i++)
+			foreach(string line in transStringList)
 			{
-				string line;
-				line = ("NODETRANS " + (i + 1));
-				for (int j = 0; j < 3; j++)
-					line = line + ("   " + trans[i][j, 0] + " " + trans[i][j, 1] + " " + trans[i][j, 2]);
-
 				stringList.Add(line);
 			}
 
 			return stringList;
 		}
 
+		public string generateNodeTransString(int numberOfNodeTrans, double[,] trans)
+		{
+			string line;
+			line = ("NODETRANS " + (numberOfNodeTrans));
+			for (int j = 0; j < 3; j++)
+				line = line + ("   " + trans[j, 0] + " " + trans[j, 1] + " " + trans[j, 2]);
+
+			return line;
+		}
+
 		public bool areAllElemetsZero (int[] array)
 		{
 			int totalZero = array.Count(x => x == 0);
 			return (totalZero == array.Length) ? true : false;
+		}
+
+		public bool isTranslationIdentityMatrix (double[,] transMatrix)
+		{
+			//TODO: Use UMatrix3x3 reference in Focus Konstruksjon. First create identity matrix, then use compareMatrix
+			return (transMatrix[0,0] == 1) ? true: false;
 		}
 
 	}

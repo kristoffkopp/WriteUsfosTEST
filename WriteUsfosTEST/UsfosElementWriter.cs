@@ -21,7 +21,6 @@ namespace WriteUsfosTEST
 					line = line + (materialNumberBeam[index] + " " + propertyNumberBeam[index]);
 					stringList.Add(line);
 				}
-
 			}
 			return stringList;
 		}

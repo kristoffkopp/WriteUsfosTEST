@@ -31,6 +31,10 @@ namespace WriteUsfosTEST
 			var elementStrings = usfosElementWriter.writeElements(m_UsfosDataObject.IndexBeam, m_UsfosDataObject.ElementType, m_UsfosDataObject.PropertyNumberBeam, m_UsfosDataObject.MaterialNumberBeam, m_UsfosDataObject.NodeNumbersBeam);
 			m_Lines.AddRange(elementStrings);
 
+			UsfosCrossSectionWriter usfosCossSecWriter = new UsfosCrossSectionWriter();
+			var crossSectionString = usfosCossSecWriter.writeCrossSectionBeam(m_UsfosDataObject.CrossSectionId, m_UsfosDataObject.AreaX, m_UsfosDataObject.Ix, m_UsfosDataObject.Iy, m_UsfosDataObject.Iz, m_UsfosDataObject.ShearAreaY, m_UsfosDataObject.ShearAreaZ);
+			m_Lines.AddRange(crossSectionString);
+
 			UsfosLoadWriter usfosLoadWriter = new UsfosLoadWriter();
 			var loadStrings = usfosLoadWriter.nodeLoadWriter(m_UsfosDataObject.NodeLoadIDs, m_UsfosDataObject.NodealIDs, m_UsfosDataObject.ForceList, m_UsfosDataObject.MomentList, m_UsfosDataObject.LoadGroup);
 			m_Lines.AddRange(loadStrings);

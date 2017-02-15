@@ -22,14 +22,14 @@ namespace WriteUsfosTESTtest
 		}
 
 		[TestMethod]
-		public void shouldReturnTrueWhenAllElementsAreZero()
+		public void areAllElementsZeroshouldReturnTrueWhenListOfOnlyZero()
 		{
 			//Act & Assert together in one
 			Assert.IsTrue(nodeWriter.areAllElemetsZero(new int[] {0,0,0,0,0,0}));
 		}
 
 		[TestMethod]
-		public void shouldReturnFalseWhenIfOneElementIsNotZero()
+		public void areAllElementsZeroshouldReturnFalseWhenListOfZeroAndOnes()
 		{
 			//Act & Assert together in one
 			Assert.IsFalse(nodeWriter.areAllElemetsZero(new int[] {0,0,0,1,0,0}));
