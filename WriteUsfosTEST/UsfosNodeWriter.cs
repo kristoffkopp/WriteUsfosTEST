@@ -72,6 +72,20 @@ namespace WriteUsfosTEST
 		public bool isTranslationIdentityMatrix (double[,] transMatrix)
 		{
 			//TODO: Use UMatrix3x3 reference in Focus Konstruksjon. First create identity matrix, then use compareMatrix
+			//if (transMatrix.Length != 3)
+			//	return false;
+
+			//double[] transElementArray = new double[transMatrix.Length * transMatrix.Length];
+			//for (int i = 0; i < transMatrix.Length; i++)
+			//{
+			//	for (int j = 0; j < transMatrix.Length; j++)
+			//	{
+			//		transElementArray[i + j] = transMatrix[i, j];
+			//	}
+			//}
+			//UMatrix3x3 currentMatrix = new UMatrix3x3(transElementArray[0], transElementArray[1], transElementArray[2], transElementArray[3], transElementArray[4], transElementArray[5], transElementArray[6], transElementArray[7], transElementArray[8]);
+			//identityMatrix = currentMatrix.CreateIdentityMatrix();
+			//return (currentMatrix == identityMatrix) ? true : false;
 			return (transMatrix[0,0] == 1) ? true: false;
 		}
 
