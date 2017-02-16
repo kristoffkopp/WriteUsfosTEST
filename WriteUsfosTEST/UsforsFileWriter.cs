@@ -3,7 +3,7 @@ using System.IO;
 
 namespace WriteUsfosTEST
 {
-	class UsfosFileWriter
+	public class UsfosFileWriter
 	{
 		private string m_FilePath;
 		private UsfosData m_UsfosDataObject;
