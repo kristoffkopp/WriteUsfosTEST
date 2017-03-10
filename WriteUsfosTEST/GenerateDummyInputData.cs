@@ -13,7 +13,7 @@ namespace WriteUsfosTEST
 			usfosData.Trans = new double[usfosData.NodeIndexes.Length][,];
 			foreach (int index in usfosData.NodeIndexes)
 			{
-				usfosData.NodeXYZ[index] = new double[3] { 1.1233, 2.2342, 3.3452 };
+				usfosData.NodeXYZ[index] = new double[3] { 1.1233+index, 2.2342+index, 3.3452+index };
 				usfosData.BoundaryCode[index] = new int[6] { 0, 0, 0, 0, 0, 0 };
 				usfosData.Trans[index] = new double[,] { { 1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } };
 			}

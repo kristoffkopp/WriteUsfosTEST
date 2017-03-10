@@ -20,7 +20,7 @@ namespace WriteUsfosTEST
 		public void writeFile()
 		{
 			UsfosNodeWriter usfosNodeWriter = new UsfosNodeWriter();
-			var nodeStrings = usfosNodeWriter.writeNodes(m_UsfosDataObject.NodeIndexes, m_UsfosDataObject.NodeXYZ, m_UsfosDataObject.BoundaryCode,m_UsfosDataObject.Trans);
+			var nodeStrings = usfosNodeWriter.writeNodes(m_UsfosDataObject.NodeIndexes, m_UsfosDataObject.NodeXYZ, m_UsfosDataObject.BoundaryCode, m_UsfosDataObject.Trans);
 			m_Lines.AddRange(nodeStrings);
 
 			UsfosMaterialWriter usfosMaterialWriter = new UsfosMaterialWriter();
