@@ -45,7 +45,7 @@ namespace WriteUsfosTEST
 			usfosData.ShearAreaY = 0.006;
 			usfosData.ShearAreaZ = 0.0002485;
 
-			usfosData.LoadGroup = new int[] { 1 }; //NB! Do not have enough knowledge of how loadContainers and LoadGroups works. In usfos this is a LOAD_COMPination
+			usfosData.LoadGroup = new int[] { 0 }; //NB! Do not have enough knowledge of how loadContainers and LoadGroups works. In usfos this is a LOAD_COMPination
 			usfosData.NodeLoadIDs = new int[] { 0, 1, 2, 3 };
 			usfosData.NodealIDs = new int[] { 4, 2, 0, 5 };
 			usfosData.ForceList = new double[usfosData.NodeLoadIDs.Length][];

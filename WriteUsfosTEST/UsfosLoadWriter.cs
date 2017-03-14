@@ -8,13 +8,13 @@ namespace WriteUsfosTEST
 		public List<string> nodeLoadWriter (int[] nodeLoadIndexes, int[] nodelIDs, double[][] forceList, double[][] momentList, int[] loadGroup)
 		{
 			var stringList = new List<string>();
-			if (loadGroup.Length > 1)
-				return null;
+			if (loadGroup.Length < 1)
+				return stringList;
 
 			foreach (int index in nodeLoadIndexes)
 			{
 				string line;
-				line = "NODELOAD " + loadGroup[0] + "  " + (nodelIDs[index] + 1) + "    ";
+				line = "NODELOAD " + loadGroup[0] + 1 + "  " + (nodelIDs[index] + 1) + "    ";
 				for (int i = 0; i < 3; i++)
 					line = line + ("    " + forceList[index][i]);
 
@@ -27,7 +27,7 @@ namespace WriteUsfosTEST
 				stringList.Add(line);
 			}
 			double scalingFactor = 1.0000; int loadCombinationID = 1; // Needs further information on how to gather data from CfemWrapper
-			stringList.Add( "LOAD_COMB " + loadCombinationID + "     " + scalingFactor + " " + loadGroup[0]);
+			stringList.Add( "LOAD_COMB " + loadCombinationID + "     " + scalingFactor + " " + loadGroup[0] + 1);
 			return stringList;
 		}
 		public bool areAllElemetsZero(double[] array)

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace WriteUsfosTEST
 {
-	public class UsfosCrossSectionWriter
+    public class UsfosCrossSectionWriter
 	{
 		public List<string> writeCrossSectionBeam(int CrossSectionId, double AreaX, double Ix, double Iy, double Iz, double ShareAreaY, double ShareAreaZ)
 		{
