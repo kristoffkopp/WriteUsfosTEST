@@ -24,8 +24,8 @@ namespace WriteUsfosTEST
 			m_Lines.AddRange(nodeStrings);
 
 			UsfosMaterialWriter usfosMaterialWriter = new UsfosMaterialWriter();
-			var materialStrings = usfosMaterialWriter.materialWriter(m_UsfosDataObject.Materials);
-			m_Lines.AddRange(materialStrings);
+			var materialStrings = usfosMaterialWriter.materialWriter(m_UsfosDataObject.MaterialID, m_UsfosDataObject.materialEmod, m_UsfosDataObject.materialPoissNu, m_UsfosDataObject.MaterialDensityRho);
+			m_Lines.Add(materialStrings);
 
 			UsfosElementWriter usfosElementWriter = new UsfosElementWriter();
 			var elementStrings = usfosElementWriter.writeElements(m_UsfosDataObject.IndexBeam, m_UsfosDataObject.ElementType, m_UsfosDataObject.PropertyNumberBeam, m_UsfosDataObject.MaterialNumberBeam, m_UsfosDataObject.NodeNumbersBeam);

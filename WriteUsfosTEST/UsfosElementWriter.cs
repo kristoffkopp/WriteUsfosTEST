@@ -8,7 +8,7 @@ namespace WriteUsfosTEST
 	}
 	public class UsfosElementWriter
 	{
-		public List<string> writeElements(int[] indexBeam, int[] elementType, int[] propertyNumberBeam, int[] materialNumberBeam, int[][] nodeNumbersBeam)
+		public List<string> writeElements(int[] indexBeam, int[] elementType, int[] propertyNumberBeam, int[] materialNumberBeam, int[,] nodeNumbersBeam)
 		{
 			var stringList = new List<string>();
 			foreach(int index in indexBeam)
@@ -17,7 +17,7 @@ namespace WriteUsfosTEST
 				{
 					string line;
 					line = elementDiscription.BEAM.ToString() + " " + (index + 1) + "  ";
-					line = line + ((nodeNumbersBeam[index][0] + 1) + " " + (nodeNumbersBeam[index][1] + 1)) + "   ";
+					line = line + ((nodeNumbersBeam[index,0] + 1) + " " + (nodeNumbersBeam[index,1] + 1)) + "   ";
 					line = line + (materialNumberBeam[index] + " " + propertyNumberBeam[index]);
 					stringList.Add(line);
 				}

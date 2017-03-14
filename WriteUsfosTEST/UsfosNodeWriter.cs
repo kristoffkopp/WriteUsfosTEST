@@ -19,9 +19,9 @@ namespace WriteUsfosTEST
 			{
 				string line;
 				line = ("NODE " + (index + 1) + "     ");
-				line = line + (nodeXYZ[index][0].ToString() + "    ");
-				line = line + (nodeXYZ[index][1].ToString() + "    ");
-				line = line + (nodeXYZ[index][2].ToString());
+				line = line + (nodeXYZ[index][0].ToString("G17") + "    ");
+				line = line + (nodeXYZ[index][1].ToString("G17") + "    ");
+				line = line + (nodeXYZ[index][2].ToString("G17"));
 
 				if(isTranslationIdentityMatrix(trans[index]) && areAllElemetsZero(bCode[index]))
 				{

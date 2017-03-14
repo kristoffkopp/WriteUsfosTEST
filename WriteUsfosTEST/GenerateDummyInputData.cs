@@ -20,21 +20,22 @@ namespace WriteUsfosTEST
 			usfosData.Trans[0][0, 0] = 0;
 			usfosData.BoundaryCode[3] = new int[6] { 1, 1, 1, 1, 1, 1 };
 
-			usfosData.Materials = new List<UsfosMaterial>();
-			usfosData.Materials.Add(new UsfosMaterial());
-			usfosData.Materials[0].Id = 1;
-			usfosData.Materials[0].Emod = 210000000000;
-			usfosData.Materials[0].DensityRho = 77000;
-			usfosData.Materials[0].PoissNu = 0.3;
+			usfosData.MaterialID = 0;
+			usfosData.materialEmod = 210000000000;
+			usfosData.MaterialDensityRho= 77000;
+			usfosData.materialPoissNu = 0.3;
 
 			usfosData.IndexBeam = new int[] { 0, 1, 2 };
 			usfosData.ElementType = new int[] { 28, 28, 28 };
 			usfosData.PropertyNumberBeam = new int[] { 1, 1, 1 }; //NB!TODO: find a way to link these to cross-sections
-			usfosData.MaterialNumberBeam = new int[] { 1, 1, 1 }; //Check: since material is sent to cfem as Material++, is it 0 or 1 indexed?
-			usfosData.NodeNumbersBeam = new int[usfosData.IndexBeam.Length][];
-			usfosData.NodeNumbersBeam[0] = new int[] { 0, 1 };
-			usfosData.NodeNumbersBeam[1] = new int[] { 2, 3 };
-			usfosData.NodeNumbersBeam[2] = new int[] { 4, 5 };
+			usfosData.MaterialNumberBeam = new int[] { 0, 0, 0 }; //Check: since material is sent to cfem as Material++, is it 0 or 1 indexed?
+			usfosData.NodeNumbersBeam = new int[usfosData.IndexBeam.Length,3];
+			usfosData.NodeNumbersBeam[0, 0] = 0;
+            usfosData.NodeNumbersBeam[0, 1] = 1;
+            usfosData.NodeNumbersBeam[1, 0] = 2;
+            usfosData.NodeNumbersBeam[1, 1] = 3;
+            usfosData.NodeNumbersBeam[2, 0] = 4;
+            usfosData.NodeNumbersBeam[2, 1] = 5;
 
 			usfosData.CrossSectionId = 0;
 			usfosData.AreaX = 0.00781;

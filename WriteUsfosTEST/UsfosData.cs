@@ -10,13 +10,16 @@ namespace WriteUsfosTEST
 		public int[][] BoundaryCode { get; set; }
 		public double[][,] Trans { get; set; }
 		//Material
-		public List<UsfosMaterial> Materials { get; set; }
-		//Elements
-		public int[] IndexBeam { get; set; }
+		public int MaterialID { get; set; }
+        public double materialEmod { get; set; }
+        public double materialPoissNu { get; set; }
+        public double MaterialDensityRho { get; set; }
+        //Elements
+        public int[] IndexBeam { get; set; }
 		public int[] ElementType { get; set; }
 		public int[] PropertyNumberBeam { get; set; }
 		public int[] MaterialNumberBeam { get; set; }
-		public int[][] NodeNumbersBeam { get; set; }
+		public int[,] NodeNumbersBeam { get; set; }
 		//Crossection
 		public int CrossSectionId { get; set; }
 		public double AreaX { get; set; }
