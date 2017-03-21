@@ -31,9 +31,8 @@ namespace WriteUsfosTEST
             line = "PLCOMP " + (CompositSectionId + 1) + "    " + z0;
             if(materialIDs.Length == thicknessList.Length && materialIDs.Length == thetalOrientationList.Length)
                 for (int i = 0; i < materialIDs.Length; i++)
-                {
                     line = "   " + materialIDs[i] + "   " + thicknessList[i] + "   " + thetalOrientationList[i];
-                }
+
             stringList.Add(line);
 
             return stringList;
