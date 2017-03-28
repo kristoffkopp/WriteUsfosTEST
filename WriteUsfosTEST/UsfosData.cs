@@ -15,19 +15,21 @@ namespace WriteUsfosTEST
         public double materialPoissNu { get; set; }
         public double MaterialDensityRho { get; set; }
         //Elements
-        public int[] IndexBeam { get; set; }
-		public int[] ElementType { get; set; }
-		public int[] PropertyNumberBeam { get; set; }
-		public int[] MaterialNumberBeam { get; set; }
-		public int[,] NodeNumbersBeam { get; set; }
-		//Crossection
-		public int CrossSectionId { get; set; }
+        public UsfosElement usfosElement = new UsfosElement();
+        public UsfosElement usfosElementShell = new UsfosElement();
+
+        //Crossection
+        public int CrossSectionId { get; set; }
 		public double AreaX { get; set; }
 		public double Ix { get; set; }
 		public double Iy { get; set; }
 		public double Iz { get; set; }
 		public double ShearAreaY { get; set; }
 		public double ShearAreaZ { get; set; }
+
+        public int CrossectionIDShell { get; set; }
+        public double thicknessShell { get; set; }
+
 		//Loads
 		public int[] LoadGroup { get; set; }
 		public int[] NodeLoadIDs { get; set; }

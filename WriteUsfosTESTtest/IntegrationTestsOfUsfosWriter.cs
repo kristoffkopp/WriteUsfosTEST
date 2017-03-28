@@ -59,12 +59,12 @@ namespace WriteUsfosTESTtest
 		[TestMethod]
 		public void readDummyUsfosDataNodeLoad1ShouldNotHaveMomentForces()
 		{
-			Assert.AreEqual(6, lineElementList[12].Length);
+			Assert.AreEqual(6, lineElementList[17].Length);
 		}
 		[TestMethod]
 		public void readDummyUsfosDataNodeLoad2ShouldHaveMomentForces()
 		{
-			Assert.AreEqual(9, lineElementList[13].Length);
+			Assert.AreEqual(9, lineElementList[18].Length);
 		}
 		[TestMethod]
 		public void readDummyUsfosDataShouldHaveElaticMaterial()
@@ -100,5 +100,71 @@ namespace WriteUsfosTESTtest
 
 			Assert.AreEqual(1, numberOfLoadComb);
 		}
-	}
+        [TestMethod]
+        public void readDummyUsfosDataShouldContainTwoTriShellElements()
+        {
+            var numberOfLoadComb = 0;
+            foreach (string[] lineElement in lineElementList)
+                if (lineElement[0] == "TRISHELL")
+                    numberOfLoadComb++;
+
+            Assert.AreEqual(2, numberOfLoadComb);
+        }
+        [TestMethod]
+        public void readDummyUsfosDataShouldContainTwoxVecUNIVECForXDirInShell()
+        {
+            var numberOfLoadComb = 0;
+            foreach (string[] lineElement in lineElementList)
+                if (lineElement[0] == "UNITVEC")
+                    numberOfLoadComb++;
+
+            Assert.AreEqual(2, numberOfLoadComb);
+        }
+        [TestMethod]
+        public void readDummyUsfosDataShouldContainOnlyOneCrossectionForShellHom()
+        {
+            var numberOfLoadComb = 0;
+            foreach (string[] lineElement in lineElementList)
+                if (lineElement[0] == "PLTHICK")
+                    numberOfLoadComb++;
+
+            Assert.AreEqual(1, numberOfLoadComb);
+        }
+        [TestMethod]
+        public void readDummyUsfosDataShouldCorssSectionPLThickWithSpecifiedThicknes()
+        {
+            foreach (string[] lineElement in lineElementList)
+                if (lineElement[0] == "PLTHICK")
+                    Assert.AreEqual("0.03", lineElement[2]);
+        }
+        [TestMethod]
+        public void readDummyUsfosDataShouldCorssSectionPLThickShouldHaveCrossectionIDTwo()
+        {
+            foreach (string[] lineElement in lineElementList)
+                if (lineElement[0] == "PLTHICK")
+                    Assert.AreEqual("2", lineElement[1]);
+        }
+
+        [TestMethod]
+        public void readDummyUsfosDataShouldHaveFirstCrossectionForShellReferingToXvecOne()
+        {
+            foreach (string[] lineElement in lineElementList)
+                if (lineElement[0] == "TRISHELL" && lineElement[1] == "1")
+                    Assert.AreEqual("1", lineElement[7]);
+        }
+        [TestMethod]
+        public void readDummyUsfosDataShouldElementShellTriShellReferToCrossectionTwo()
+        {
+            foreach (string[] lineElement in lineElementList)
+                if (lineElement[0] == "TRISHELL")
+                    Assert.AreEqual("2", lineElement[6]);
+        }
+        [TestMethod]
+        public void readDummyUsfosDataShouldTheFirstXvecReturnOneAtFirstXVec()
+        {
+            foreach (string[] lineElement in lineElementList)
+                if (lineElement[0] == "UNITVEC" && lineElement[1] == "1")
+                    Assert.AreEqual("1", lineElement[2]);
+        }
+    }
 }

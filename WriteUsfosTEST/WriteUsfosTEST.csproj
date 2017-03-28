@@ -59,6 +59,7 @@
     <Compile Include="UsforsFileWriter.cs" />
     <Compile Include="UsfosCrossSectionWriter.cs" />
     <Compile Include="UsfosData.cs" />
+    <Compile Include="UsfosElement.cs" />
     <Compile Include="UsfosElementWriter.cs" />
     <Compile Include="UsfosLoadWriter.cs" />
     <Compile Include="UsfosMaterial.cs" />

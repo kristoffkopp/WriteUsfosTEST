@@ -9,29 +9,35 @@ namespace WriteUsfosTEST
     }
     public class UsfosElementWriter
     {
-        public List<string> writeElements(int[] indexElement, int[] elementType, int[] propertyNumberElement, int[] materialNumberElement, int[,] nodeNumbersElements)
+        public List<string> writeElements(UsfosElement usfosElement)
         {
             var stringList = new List<string>();
-            foreach (int index in indexElement)
+            var xvecList = new List<double[]>();
+            foreach (int index in usfosElement.IndexElement)
             {
-                if (elementType[index] == (int)elementDiscription.BEAM)
+                if (usfosElement.ElementType[index] == (int)elementDiscription.BEAM)
                 {
                     string line;
                     line = elementDiscription.BEAM.ToString() + " " + (index + 1) + "  ";
-                    line = line + ((nodeNumbersElements[index, 0] + 1) + " " + (nodeNumbersElements[index, 1] + 1)) + "   ";
-                    line = line + ((materialNumberElement[index] + 1) + " " + (propertyNumberElement[index] + 1));
+                    line = line + ((usfosElement.NodeNumbersElements[index, 0] + 1) + " " + (usfosElement.NodeNumbersElements[index, 1] + 1)) + "   ";
+                    line = line + ((usfosElement.MaterialNumberElement[index] + 1) + " " + (usfosElement.PropertyNumberElement[index] + 1));
                     stringList.Add(line);
                 }
 
-                if (elementType[index] == (int)elementDiscription.TRISHELL)
+                if (usfosElement.ElementType[index] == (int)elementDiscription.TRISHELL)
                 {
                     string line;
                     line = elementDiscription.TRISHELL.ToString() + " " + (index + 1) + "  ";
-                    line = line + ((nodeNumbersElements[index, 0] + 1) + " " + (nodeNumbersElements[index, 1] + 1) + " " + (nodeNumbersElements[index, 2] + 1) + "   ");
-                    line = line + ((materialNumberElement[index] + 1) + " " + (propertyNumberElement[index] + 1));
+                    line = line + ((usfosElement.NodeNumbersElements[index, 0] + 1) + " " + (usfosElement.NodeNumbersElements[index, 1] + 1) + " " + (usfosElement.NodeNumbersElements[index, 2] + 1) + "   ");
+                    line = line + ((usfosElement.MaterialNumberElement[index] + 1) + " " + (usfosElement.PropertyNumberElement[index] + 1));
+                    line = line + "   " +(index + 1);
+                    xvecList.Add(usfosElement.xVec[index]);
                     stringList.Add(line);
                 }
             }
+            for (int i = 0; i < xvecList.Count; i++)
+                stringList.Add("UNITVEC " + (i + 1) + "    " + xvecList[i][0] + "   " + xvecList[i][1] + "   " + xvecList[i][2]);
+
             return stringList;
         }
     }
