@@ -29,7 +29,7 @@ namespace WriteUsfosTEST
                 stringList.Add(line);
             }
 
-            double scalingFactor = 1;
+            var scalingFactor = 1;
             foreach (int loadGr in currentLoadGroupIDs)
                 stringList.Add("LOAD_COMB " + (loadGr + 1) + "     " + scalingFactor + " " + (loadGr + 1));
             //Uses loadGroup as ID for LOAD_COMB. ID and loadGroup should always be the same in Usfos

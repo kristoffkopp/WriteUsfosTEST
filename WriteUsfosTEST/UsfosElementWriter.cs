@@ -30,8 +30,11 @@ namespace WriteUsfosTEST
                     line = elementDiscription.TRISHELL.ToString() + " " + (index + 1) + "  ";
                     line = line + ((usfosElement.NodeNumbersElements[index, 0] + 1) + " " + (usfosElement.NodeNumbersElements[index, 1] + 1) + " " + (usfosElement.NodeNumbersElements[index, 2] + 1) + "   ");
                     line = line + ((usfosElement.MaterialNumberElement[index] + 1) + " " + (usfosElement.PropertyNumberElement[index] + 1));
-                    line = line + "   " +(index + 1);
-                    xvecList.Add(usfosElement.xVec[index]);
+                    if(usfosElement.xVec.Length != 0)
+                    {
+                        line = line + "   " + (index + 1);
+                        xvecList.Add(usfosElement.xVec[index]);
+                    }
                     stringList.Add(line);
                 }
             }
